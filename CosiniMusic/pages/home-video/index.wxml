@@ -1,6 +1,17 @@
 <!--pages/home-video/index.wxml-->
 <view class="video">
   <block wx:for="{{topMvs}}" wx:key="id">
-    <view>{{item.name}}</view>
+    <view class="item">
+      <view class="album">
+        <image class="image" src="{{item.cover}}" mode="widthFix"></image>
+        <view class="info">
+          <view class="count">{{item.playCount}}</view>
+          <view class="duration">{{item.mv.videos[0].duration}}</view>
+        </view>
+      </view>
+      <view class="content">
+        {{item.name}} - {{item.artistName}}
+      </view>
+    </view>
   </block>
 </view>

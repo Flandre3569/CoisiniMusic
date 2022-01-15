@@ -8,10 +8,10 @@ class MXRequest {
         method: method,
         data: params,
         success: function(res) {
-          resolve(res);
+          resolve(res.data);
         },
         fail: function(err) {
-          reject(err);
+          reject(err.data);
         }
       })
     })
