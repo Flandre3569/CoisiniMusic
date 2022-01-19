@@ -1,18 +1,7 @@
 <!--pages/home-video/index.wxml-->
-<wxs src="../../utils/formatCount.wxs" module="format"></wxs>
+
 <view class="video">
-  <block wx:for="{{topMvs}}" wx:key="id">
-    <view class="item">
-      <view class="album">
-        <image class="image" src="{{item.cover}}" mode="widthFix"></image>
-        <view class="info">
-          <view class="count">{{format.formatCount(item.playCount)}}</view>
-          <view class="duration">{{format.formatDuration(item.mv.videos[0].duration)}}</view>
-        </view>
-      </view>
-      <view class="content">
-        {{item.name}} - {{item.artistName}}
-      </view>
-    </view>
-  </block>
+  <view wx:for="{{topMvs}}" wx:key="id" class="item">
+    <video-item-v1 item="{{item}}"></video-item-v1>
+  </view>
 </view>
