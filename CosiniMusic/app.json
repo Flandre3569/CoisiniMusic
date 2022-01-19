@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home-music/index",
-    "pages/home-video/index"
+    "pages/home-video/index",
+    "pages/detail-video/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +22,7 @@
         "pagePath": "pages/home-video/index",
         "text": "视频",
         "iconPath": "assets/icons/video-icon.png",
-        "selectedIconPath": "assets/icons/video-icon.png"  
+        "selectedIconPath": "assets/icons/video-icon.png"
       }
     ]
   },

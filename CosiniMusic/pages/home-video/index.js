@@ -32,7 +32,7 @@ Page({
 
   // 封装网络请求方法
   async getTopMvData(offset) {
-    if(!this.data.hasMore) return;
+    if(!this.data.hasMore && offset !== 0) return;
 
     // 加载动画
     wx.showNavigationBarLoading();
@@ -49,6 +49,16 @@ Page({
 
     // 加载结束，关闭动画
     wx.hideNavigationBarLoading();
+  },
+
+  // 封装事件处理方法
+  handleVideoItemClick: function(event) {
+    // 获取id
+    const id = event.currentTarget.dataset.item.id;
+    // 页面跳转
+    wx.navigateTo({
+      url: `/pages/detail-video/index?id=${id}`,
+    })
   },
 
   // 下拉刷新
