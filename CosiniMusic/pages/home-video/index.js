@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topMvs: []
+    topMvs: [],
+    hasMore: true
   },
 
   /**
@@ -24,8 +25,40 @@ Page({
    * 生命周期函数--监听页面加载
    * async await
    */
-  onLoad: async function (options) {
-    const res = await getTopMv(0);
-    this.setData({ topMvs: res.data })
+  // 初始化
+  onLoad: function (options) {
+    this.getTopMvData(0);
+  },
+
+  // 封装网络请求方法
+  async getTopMvData(offset) {
+    if(!this.data.hasMore) return;
+
+    // 加载动画
+    wx.showNavigationBarLoading();
+    // 请求的真正内容
+    const res = await getTopMv(offset);
+    let newData = this.data.topMvs;
+    if(offset === 0) {
+      newData = res.data;
+    } else {
+      newData = newData.concat(res.data);
+    }
+    this.setData({ topMvs: newData });
+    this.setData({ hasMore: res.hasMore });
+
+    // 加载结束，关闭动画
+    wx.hideNavigationBarLoading();
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.getTopMvData(0);
+    wx.stopPullDownRefresh();
+  },
+
+  // 下滑到底部加载
+  onReachBottom: function() {
+    this.getTopMvData(this.data.topMvs.length);
   }
 })

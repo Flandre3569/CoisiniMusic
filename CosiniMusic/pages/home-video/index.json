@@ -1,5 +1,7 @@
 {
   "usingComponents": {
     "video-item-v1": "/components/video-item-v1/index"
-  }
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }
