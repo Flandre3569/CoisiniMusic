@@ -1,2 +1,3 @@
 <!--pages/home-music/index.wxml-->
-
+<view>Hello world</view>
+<van-search></van-search>
